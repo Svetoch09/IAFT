@@ -10,7 +10,7 @@ import pages.LoginPage;
 import java.time.Duration;
 
 public class BaseTest {
-    public WebDriver browser;
+    public WebDriver driver;
     protected LoginPage  loginPage;
     
     @BeforeMethod
@@ -18,17 +18,17 @@ public class BaseTest {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("start-maximized");
         options.addArguments("--guest");
-        browser = new ChromeDriver(options);
+        driver = new ChromeDriver(options);
         // options.addArguments("headless"); - без открытия
-        browser.manage().timeouts().implicitlyWait(Duration.ofSeconds(6));
-        loginPage = new LoginPage(browser);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(6));
+        loginPage = new LoginPage(driver);
 
     }
 
     @AfterMethod
     public void close() {
-        if (browser != null) {
-            browser.quit();
+        if (driver != null) {
+            driver.quit();
         }
     }
 }
