@@ -1,7 +1,7 @@
 #repository
 /.idea
 target
-MyAttempts/
+src/MyAttempts/
 
 #other files
 *.iml

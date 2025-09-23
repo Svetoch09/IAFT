@@ -11,7 +11,7 @@ import java.time.Duration;
 
 public class BaseTest {
     public WebDriver browser;
-    public LoginPage  loginPage;
+    protected LoginPage  loginPage;
     
     @BeforeMethod
     public void setup() {
