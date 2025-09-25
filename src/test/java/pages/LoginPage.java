@@ -23,6 +23,7 @@ public class LoginPage extends BasePage {
         driver.findElement(PASSWORD_INPUT).sendKeys(password);
         driver.findElement(LOGIN_BTN).click();
     }
+
     public String checkErrorMsg() {
         return driver.findElement(ERROR).getText();
     }

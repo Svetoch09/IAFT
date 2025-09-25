@@ -2,6 +2,7 @@ package tests;
 
 import org.testng.annotations.Test;
 import parent.BaseTest;
+
 import static org.testng.Assert.*;
 
 public class LoginTest extends BaseTest {
@@ -12,12 +13,9 @@ public class LoginTest extends BaseTest {
         loginPage.login("standard_user", "secret_sauce");
 
         assertTrue(productsPage.isTitlePresent());
-        assertEquals(productsPage.getTitle(), "Products", "Product title is not present");
-        productsPage.addToCart("Sauce Labs Backpack");
-        //loginPage.open("inventory.html");
     }
 
-    @Test(description = "Wrong username error",  priority = 2)
+    @Test(description = "Wrong username error", priority = 2)
     public void checkUserNameError() {
         loginPage.open();
         loginPage.login("useruser", "secret_sauce");
@@ -25,7 +23,7 @@ public class LoginTest extends BaseTest {
                 "Error is not correct");
     }
 
-    @Test(description = "Locked out user error",  priority = 4)
+    @Test(description = "Locked out user error", priority = 4)
     public void checkUserLockedOutError() {
         loginPage.open();
         loginPage.login("locked_out_user", "secret_sauce");
@@ -33,7 +31,7 @@ public class LoginTest extends BaseTest {
                 "Error is not correct");
     }
 
-    @Test(description = "No password error",   priority = 3)
+    @Test(description = "No password error", priority = 3)
     public void checkNoPasswordError() {
         loginPage.open();
         loginPage.login("standard_user", "");

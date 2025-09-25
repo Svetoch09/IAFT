@@ -12,9 +12,9 @@ import java.time.Duration;
 
 public class BaseTest {
     public WebDriver driver;
-    protected LoginPage  loginPage;
+    protected LoginPage loginPage;
     protected ProductsPage productsPage;
-    
+
     @BeforeMethod
     public void setup() {
         ChromeOptions options = new ChromeOptions();
