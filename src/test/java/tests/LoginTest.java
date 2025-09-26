@@ -1,5 +1,7 @@
 package tests;
 
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import parent.BaseTest;
 
@@ -15,27 +17,19 @@ public class LoginTest extends BaseTest {
         assertTrue(productsPage.isTitlePresent());
     }
 
-    @Test(description = "Wrong username error", priority = 2)
-    public void checkUserNameError() {
-        loginPage.open();
-        loginPage.login("useruser", "secret_sauce");
-        assertEquals(loginPage.checkErrorMsg(), "Epic sadface: Username and password do not match any user in this service",
-                "Error is not correct");
+    @DataProvider
+    public Object[][] loginData() {
+        return new Object[][]{
+                {"useruser", "secret_sauce", "Epic sadface: Username and password do not match any user in this service"},
+                {"locked_out_user", "secret_sauce", "Epic sadface: Sorry, this user has been locked out."},
+                {"standard_user", "", "Epic sadface: Password is required"}
+        };
     }
 
-    @Test(description = "Locked out user error", priority = 4)
-    public void checkUserLockedOutError() {
+    @Test(dataProvider = "loginData", description = "Wrong login data", priority = 2)
+    public void checkIncorrectData(String username, String password, String errorMessage) {
         loginPage.open();
-        loginPage.login("locked_out_user", "secret_sauce");
-        assertEquals(loginPage.checkErrorMsg(), "Epic sadface: Sorry, this user has been locked out.",
-                "Error is not correct");
-    }
-
-    @Test(description = "No password error", priority = 3)
-    public void checkNoPasswordError() {
-        loginPage.open();
-        loginPage.login("standard_user", "");
-        assertEquals(loginPage.checkErrorMsg(), "Epic sadface: Password is required",
-                "Error is not correct");
+        loginPage.login(username, password);
+        assertEquals(loginPage.checkErrorMsg(), errorMessage);
     }
 }
