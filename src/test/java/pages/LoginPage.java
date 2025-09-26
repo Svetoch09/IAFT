@@ -34,7 +34,6 @@ public class LoginPage extends BasePage {
 
     public void fillPassword(String password) {
         driver.findElement(PASSWORD_INPUT).sendKeys(password);
-
     }
 
     public void clickSubmit() {
