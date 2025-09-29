@@ -12,6 +12,9 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourseEndcoding>UTF-8</project.build.sourseEndcoding>
+        <testng.vertion>7.11.0</testng.vertion>
+        <selenium-java.version>4.35.0</selenium-java.version>
+        <logback-classic.version>1.5.6</logback-classic.version>
     </properties>
 
     <dependencies>
@@ -19,20 +22,20 @@
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
-            <version>4.35.0</version>
+            <version>${selenium-java.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
-            <version>7.11.0</version>
+            <version>${testng.vertion}</version>
             <scope>test</scope>
         </dependency>
 
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
-            <version>1.5.6</version>
+            <version>${logback-classic.version}</version>
             <scope>test</scope>
         </dependency>
 

@@ -29,10 +29,12 @@ public class LoginPage extends BasePage {
     }
 
     public void fillLoginField(String username) {
+
         driver.findElement(USERNAME_INPUT).sendKeys(username);
     }
 
     public void fillPassword(String password) {
+
         driver.findElement(PASSWORD_INPUT).sendKeys(password);
     }
 

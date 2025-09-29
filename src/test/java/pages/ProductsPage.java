@@ -28,6 +28,12 @@ public class ProductsPage extends BasePage {
     }
 
     public void addToCart(int goodsIndex) {
+
         driver.findElements(ADD_TO_CART_BUTTON).get(goodsIndex).click();
+    }
+
+    public void openToCart() {
+
+        driver.findElement(By.xpath("//*[@data-test='shopping-cart-link']")).click();
     }
 }

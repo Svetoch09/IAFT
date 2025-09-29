@@ -17,7 +17,7 @@ public class LoginTest extends BaseTest {
         assertTrue(productsPage.isTitlePresent());
     }
 
-    @DataProvider
+    @DataProvider(name = "inc")
     public Object[][] loginData() {
         return new Object[][]{
                 {"useruser", "secret_sauce", "Epic sadface: Username and password do not match any user in this service"},
@@ -26,7 +26,7 @@ public class LoginTest extends BaseTest {
         };
     }
 
-    @Test(dataProvider = "loginData", description = "Wrong login data", priority = 2)
+    @Test(dataProvider = "inc", description = "Wrong login data", priority = 2)
     public void checkIncorrectData(String username, String password, String errorMessage) {
         loginPage.open();
         loginPage.login(username, password);
