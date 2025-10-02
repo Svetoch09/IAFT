@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -15,10 +16,12 @@ public class ProductsPage extends BasePage {
         super(driver);
     }
 
+    @Step("Checking the correctness of the page title")
     public String getTitle() {
         return driver.findElement(title).getText();
     }
 
+    @Step("Checking the page title display")
     public boolean isTitlePresent() {
         return wait.until(ExpectedConditions.visibilityOfElementLocated(title2)).isDisplayed();
     }
@@ -28,11 +31,13 @@ public class ProductsPage extends BasePage {
         driver.findElement(addToCart).click();
     }
 
+    @Step("Add goods to a cart")
     public void addToCart(int goodsIndex) {
 
         driver.findElements(ADD_TO_CART_BUTTON).get(goodsIndex).click();
     }
 
+    @Step("Open a cart")
     public void openToCart() {
 
         driver.findElement(TO_CART_BUTTON).click();
