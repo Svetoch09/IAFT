@@ -1,5 +1,6 @@
 package tests;
 
+import io.qameta.allure.*;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import parent.BaseTest;
@@ -11,7 +12,15 @@ import static user.UserFactory.*;
 
 public class LoginTest extends BaseTest {
 
-    @Test(description = "Successful login", priority = 1)
+    @Epic("Login module...")
+    @Feature("Log in...")
+    @Story("Positiv")
+    @Severity(SeverityLevel.NORMAL)
+    @Step("Checking successful login")
+    @Owner("Svetlana Paskevich  paskevich.svetlana@gmail.com")
+    @TmsLink("index.php?/runs/overview/12")
+    @Issue("projects/CW")
+    @Test(description = "Successful login", priority = 1, enabled = false)
     public void checkSuccessfulLogin() {
         System.out.println("Checking Successful Login in thread: " + Thread.currentThread().getName());
         loginPage.open();
@@ -36,6 +45,7 @@ public class LoginTest extends BaseTest {
         };
     }
 
+    @Step("Checking unsuccessful login and errors are correct")
     @Test(dataProvider = "inc", description = "Wrong login data", priority = 2)
     public void checkIncorrectData(User user, String errorMessage) {
         System.out.println("Checking unsuccessful Login in thread: " + Thread.currentThread().getName());

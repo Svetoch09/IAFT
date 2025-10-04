@@ -1,19 +1,23 @@
 package tests;
 
+import io.qameta.allure.Step;
 import org.testng.annotations.Test;
 import parent.BaseTest;
+
 import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertTrue;
 import static org.testng.AssertJUnit.assertEquals;
 import static user.UserFactory.*;
 
 /**
- * test description */
+ * test description
+ */
 
 public class AddGoodsToCartTest extends BaseTest {
 
-    @Test(description = "Successfull add goods to cart", priority = 1)
-    public void checkSuccessfullAddGoodsToCart() {
+    @Step("Checking if items have been added to the cart")
+    @Test(description = "Successful add goods to a cart", priority = 1)
+    public void checkSuccessfulAddGoodsToCart() {
         System.out.println("Checking AddGoods in thread: " + Thread.currentThread().getName());
         loginPage.open();
         loginPage.login(withAdminPermission());
