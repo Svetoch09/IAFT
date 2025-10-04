@@ -3,10 +3,10 @@ package tests;
 import io.qameta.allure.Step;
 import org.testng.annotations.Test;
 import parent.BaseTest;
-
+import static org.testng.Assert.*;
+import static enums.DepartmentNaming.CARTS;
 import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertTrue;
-import static org.testng.AssertJUnit.assertEquals;
 import static user.UserFactory.*;
 
 /**
@@ -23,6 +23,8 @@ public class AddGoodsToCartTest extends BaseTest {
         loginPage.login(withAdminPermission());
         productsPage.addToCart(0);
         productsPage.openToCart();
+        assertTrue(cartPage.isPageTitleDisplayed());
+        assertEquals(cartPage.getPageTitleText(), CARTS.getDisplayName());
         assertTrue(cartPage.getProductsNames().contains("Sauce Labs Backpack"));
         assertEquals(cartPage.getProductsNames().size(), 1);
         assertFalse(cartPage.getProductsNames().isEmpty());

@@ -32,12 +32,12 @@ public class LoginPage extends BasePage {
         clickSubmit();
     }
 
-    @Step("Input: {valid.username}")
+    @Step("Input: username")
     public void fillLoginField(String username) {
         driver.findElement(USERNAME_INPUT).sendKeys(username);
     }
 
-    @Step("Input: {valid.password}")
+    @Step("Input: user password")
     public void fillPassword(String password) {
         driver.findElement(PASSWORD_INPUT).sendKeys(password);
     }
@@ -47,6 +47,7 @@ public class LoginPage extends BasePage {
         driver.findElement(LOGIN_BTN).click();
     }
 
+    @Step("Validating the error message")
     public String checkErrorMsg() {
         return driver.findElement(ERROR).getText();
     }
