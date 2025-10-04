@@ -33,13 +33,11 @@ public class ProductsPage extends BasePage {
 
     @Step("Add goods to a cart")
     public void addToCart(int goodsIndex) {
-
         driver.findElements(ADD_TO_CART_BUTTON).get(goodsIndex).click();
     }
 
     @Step("Open a cart")
     public void openToCart() {
-
         driver.findElement(TO_CART_BUTTON).click();
     }
 }
