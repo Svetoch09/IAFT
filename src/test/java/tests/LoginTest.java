@@ -7,6 +7,7 @@ import parent.BaseTest;
 import utils.PropertyReader;
 import user.User;
 
+import static enums.DepartmentNaming.*;
 import static org.testng.Assert.*;
 import static user.UserFactory.*;
 
@@ -20,12 +21,13 @@ public class LoginTest extends BaseTest {
     @Owner("Svetlana Paskevich  paskevich.svetlana@gmail.com")
     @TmsLink("index.php?/runs/overview/12")
     @Issue("projects/CW")
-    @Test(description = "Successful login", priority = 1, enabled = false)
+    @Test(description = "Successful login", priority = 1, enabled = true)
     public void checkSuccessfulLogin() {
         System.out.println("Checking Successful Login in thread: " + Thread.currentThread().getName());
         loginPage.open();
         loginPage.login(withAdminPermission());
-        assertTrue(productsPage.isTitlePresent());
+        assertTrue(productsPage.isPageTitleDisplayed());
+        assertEquals(productsPage.getPageTitleText(), PRODUCTS.getDisplayName());
     }
 
     @DataProvider(name = "inc")
